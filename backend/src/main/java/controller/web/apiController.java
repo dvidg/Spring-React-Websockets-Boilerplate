@@ -46,20 +46,10 @@ public class apiController {
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
 
-    @SubscribeMapping("/topic/sampleSubscripe")
-    String sampleSubscripe(Principal principal) {
-        return "here";
-    }
-
-    @MessageMapping("/sampleMessage")
-    @SendTo("/topic/sampleReceive")
-    void sampleMessageMapping() {
-
-    }
 
 	@MessageMapping("/ping")
     public void ping(String response) {
-		//accept ping to keep WS open
+        System.out.println("Connection active");
     }
 
 }
