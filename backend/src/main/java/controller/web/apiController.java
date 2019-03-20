@@ -46,16 +46,13 @@ public class apiController {
     @Autowired
     private SimpMessagingTemplate messagingTemplate;
 
-	// Add user to lobby
-    @SubscribeMapping("/sampSubscribe")
-    void sampleSubscripe(Principal principal) {
-        messagingTemplate.convertAndSend("/sampleSend", "here");
+    @SubscribeMapping("/topic/sampleSubscripe")
+    String sampleSubscripe(Principal principal) {
+        return "here";
     }
 
-        // Add user to lobby
-
-    @MessageMapping("/sampMess")
-    @SendTo("/topic/sampMessSend")
+    @MessageMapping("/sampleMessage")
+    @SendTo("/topic/sampleReceive")
     void sampleMessageMapping() {
 
     }
