@@ -10,7 +10,6 @@
  
 package controller;
 
-import map.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,20 +37,12 @@ import java.util.Optional;
 @RequestMapping("/api")
 public class Controller {
 
-    public Map a = new Map();
-
-    @RequestMapping("/map/click")
+    @RequestMapping("/click")
     @ResponseBody
     public String validClick(@RequestBody String value) {
         System.out.println(value);
 	return (value);
     }
     
-/*    //return visual map as 2d array
-    @CrossOrigin
-    @GetMapping("/visualMap")
-    int[][] test() {
-        return a.multiplyVisualMap();
-    }
-*/
+
 }
