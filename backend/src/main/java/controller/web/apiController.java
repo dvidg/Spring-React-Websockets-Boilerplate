@@ -23,7 +23,6 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.messaging.simp.annotation.SubscribeMapping;
-import java.security.Principal;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
@@ -47,9 +46,19 @@ public class apiController {
     private SimpMessagingTemplate messagingTemplate;
 
 
+    @MessageMapping("/sampleMessage")
+    @SendTo("/topic/returnMessage")
+    public String changeDifficulty(String response) {
+        JSONObject temp = new JSONObject(response);
+        String returnString = temp.getString("message");
+        System.out.println("Message received: " + returnString);
+        returnString = "Server says: " + returnString;
+        // messagingTemplate.convertAndSend("/topic/returnMessage", temp);
+        return returnString;
+    }
+
 	@MessageMapping("/ping")
     public void ping(String response) {
         System.out.println("Connection active");
     }
-
 }

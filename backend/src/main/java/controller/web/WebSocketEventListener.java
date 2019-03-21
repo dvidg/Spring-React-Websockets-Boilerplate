@@ -28,23 +28,5 @@ public class WebSocketEventListener {
     public void handleWebSocketConnectListener(SessionConnectedEvent event) {
         logger.info("Received a new web socket connection");
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
-//	GenericMessage connectHeader = (GenericMessage)headerAccessor.getHeader(SimpMessageHeaderAccessor.CONNECT_MESSAGE_HEADER);    // FIXME find a way to pass the username to the server
-//        Map<String, List<String>> nativeHeaders = (Map<String, List<String>>) connectHeader.getHeaders().get(SimpMessageHeaderAccessor.NATIVE_HEADERS);
-
-//	messagingTemplate.convertAndSend("/player/username/", nativeHeaders.get("user"));
-    }
-/*
-    @EventListener
-    public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
-        StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
-
-        String username = (String) headerAccessor.getSessionAttributes().get("username");
-        if(username != null) {
-            logger.info("User Disconnected : " + username);
-
-
-            messagingTemplate.convertAndSend("/topic/public", chatMessage);
-        }
-    }
-*/
+	}
 }

@@ -6,4 +6,3 @@ controller/WebSocketEventListener.class
 controller/apiController.class
 controller/Application.class
 controller/CorsFilter.class
-controller/Controller.class
